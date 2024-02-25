@@ -1,0 +1,95 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-declaration-strict-value",
+    "stylelint-use-logical",
+    "./postcss/validateThemeVariables.js"
+  ],
+  "ignoreFiles": [
+    "**/*.tsx"
+  ],
+  "rules": {
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": [
+          "color-mod",
+          "shade",
+          "tint",
+          "alpha"
+        ]
+      }
+    ],
+    "import-notation": "string",
+    "string-quotes": "single",
+    "csstools/use-logical": [
+      "always",
+      {
+        "direction": "ltr"
+      }
+    ],
+    "color-hex-length": "long",
+    "no-descending-specificity": null,
+    "custom-property-empty-line-before": null,
+    "value-list-comma-newline-after": null,
+    "declaration-colon-newline-after": null,
+    "comment-empty-line-before": null,
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "/color$/"
+      ],
+      {
+        "ignoreFunctions": true,
+        "ignoreValues": [
+          "currentcolor",
+          "inherit",
+          "transparent"
+        ]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global",
+          "local"
+        ]
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": [
+          "/grid/"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.module.css"
+      ],
+      "rules": {
+        "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"
+      }
+    },
+    {
+      "files": [
+        "./src/styles/themes/*.css"
+      ],
+      "rules": {
+        "kitsu-io/validate-theme-variables": [
+          "warning",
+          {
+            "files": [
+              "./src/styles/themes/light.css",
+              "./src/styles/themes/dark.css",
+              "./src/styles/themes/oled.css"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

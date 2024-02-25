@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": false,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "app/*": ["./src/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./custom_typings"],
+    "types": ["vite-plugin-svgr/client", "image", "@testing-library/jest-dom"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": false
+  },
+  "include": ["./src"],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.head.json" },
+    { "path": "./.storybook/tsconfig.json" }
+  ]
+}

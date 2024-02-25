@@ -1,0 +1,29 @@
+.rule {
+  font-size: var(--font-xxs);
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  color: var(--rule-text);
+  align-items: center;
+  margin: 6px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::after,
+  &::before {
+    flex: 1;
+    height: 1px;
+    content: '';
+    background-color: var(--rule-background);
+  }
+
+  &::before {
+    margin-right: 5px;
+  }
+
+  &::after {
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,475 @@
+.button {
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition-property: background-color, color, outline-width, box-shadow;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out-sine;
+  cursor: default;
+  border: none;
+  outline: var(--focus-outline);
+  outline-width: 0;
+
+  &:focus {
+    outline: var(--focus-outline);
+  }
+}
+
+/*** Button Kinds ***/
+.solid {
+  color: var(--white);
+  background-color: var(--bg);
+
+  &:hover {
+    background-color: var(--bg-hover);
+  }
+
+  &:active {
+    background-color: var(--bg-active);
+  }
+
+  &:disabled {
+    background-color: var(--bg);
+    color: var(--white);
+  }
+}
+
+.outline {
+  color: var(--color);
+  background-color: transparent;
+  box-shadow: var(--color) 0 0 0 1px inset;
+
+  &:hover {
+    background-color: var(--color-hover);
+    color: var(--white);
+    box-shadow: var(--color-hover) 0 0 0 1px inset;
+  }
+
+  &:active {
+    background-color: var(--color-active);
+    color: var(--white);
+    box-shadow: var(--color-active) 0 0 0 1px inset;
+  }
+
+  &:disabled {
+    color: var(--color);
+    background-color: transparent;
+    box-shadow: var(--color) 0 0 0 1px inset;
+  }
+}
+
+.borderless {
+  color: var(--fg);
+  background-color: var(--bg, transparent);
+
+  &:hover {
+    color: var(--fg-hover);
+    background-color: var(--bg-hover);
+  }
+
+  &:active {
+    color: var(--fg-active);
+    background-color: var(--bg-active);
+  }
+
+  &:disabled {
+    color: var(--fg);
+    background-color: var(--bg, transparent);
+  }
+}
+
+/*** Button Colors ***/
+:--theme-light {
+  .red {
+    &.solid {
+      --bg: var(--red-4);
+      --bg-hover: var(--red-5);
+      --bg-active: var(--red-6);
+    }
+
+    &.outline {
+      --color: var(--red-4);
+      --color-hover: var(--red-5);
+      --color-active: var(--red-6);
+    }
+
+    &.borderless {
+      --fg: var(--red-4);
+      --fg-hover: var(--red-5);
+      --bg-hover: var(--red-1);
+      --fg-active: var(--red-6);
+      --bg-active: var(--red-2);
+    }
+  }
+
+  .pink {
+    &.solid {
+      --bg: var(--pink-4);
+      --bg-hover: var(--pink-5);
+      --bg-active: var(--pink-6);
+    }
+
+    &.outline {
+      --color: var(--pink-4);
+      --color-hover: var(--pink-5);
+      --color-active: var(--pink-6);
+    }
+
+    &.borderless {
+      --fg: var(--pink-4);
+      --fg-hover: var(--pink-5);
+      --bg-hover: var(--pink-1);
+      --fg-active: var(--pink-6);
+      --bg-active: var(--pink-2);
+    }
+  }
+
+  .yellow {
+    &.solid {
+      --bg: var(--yellow-4);
+      --bg-hover: var(--yellow-5);
+      --bg-active: var(--yellow-6);
+    }
+
+    &.outline {
+      --color: var(--yellow-4);
+      --color-hover: var(--yellow-5);
+      --color-active: var(--yellow-6);
+    }
+
+    &.borderless {
+      --fg: var(--yellow-4);
+      --fg-hover: var(--yellow-5);
+      --bg-hover: var(--yellow-1);
+      --fg-active: var(--yellow-6);
+      --bg-active: var(--yellow-2);
+    }
+  }
+
+  .green {
+    &.solid {
+      --bg: var(--green-4);
+      --bg-hover: var(--green-5);
+      --bg-active: var(--green-6);
+    }
+
+    &.outline {
+      --color: var(--green-4);
+      --color-hover: var(--green-5);
+      --color-active: var(--green-6);
+    }
+
+    &.borderless {
+      --fg: var(--green-4);
+      --fg-hover: var(--green-5);
+      --bg-hover: var(--green-1);
+      --fg-active: var(--green-6);
+      --bg-active: var(--green-2);
+    }
+  }
+
+  .blue {
+    &.solid {
+      --bg: var(--blue-4);
+      --bg-hover: var(--blue-5);
+      --bg-active: var(--blue-6);
+    }
+
+    &.outline {
+      --color: var(--blue-4);
+      --color-hover: var(--blue-5);
+      --color-active: var(--blue-6);
+    }
+
+    &.borderless {
+      --fg: var(--blue-4);
+      --fg-hover: var(--blue-5);
+      --bg-hover: var(--blue-1);
+      --fg-active: var(--blue-6);
+      --bg-active: var(--blue-2);
+    }
+  }
+
+  .purple {
+    &.solid {
+      --bg: var(--purple-4);
+      --bg-hover: var(--purple-5);
+      --bg-active: var(--purple-6);
+    }
+
+    &.outline {
+      --color: var(--purple-4);
+      --color-hover: var(--purple-5);
+      --color-active: var(--purple-6);
+    }
+
+    &.borderless {
+      --fg: var(--purple-4);
+      --fg-hover: var(--purple-5);
+      --bg-hover: var(--purple-1);
+      --fg-active: var(--purple-6);
+      --bg-active: var(--purple-2);
+    }
+  }
+
+  .kitsu-purple {
+    &.solid {
+      --bg: var(--kitsu-purple-4);
+      --bg-hover: var(--kitsu-purple-5);
+      --bg-active: var(--kitsu-purple-6);
+    }
+
+    &.outline {
+      --color: var(--kitsu-purple-4);
+      --color-hover: var(--kitsu-purple-5);
+      --color-active: var(--kitsu-purple-6);
+    }
+
+    &.borderless {
+      --fg: var(--kitsu-purple-4);
+      --fg-hover: var(--kitsu-purple-5);
+      --bg-hover: var(--kitsu-purple-1);
+      --fg-active: var(--kitsu-purple-6);
+      --bg-active: var(--kitsu-purple-2);
+    }
+  }
+
+  .grey {
+    &.solid {
+      --bg: var(--grey-4);
+      --bg-hover: var(--grey-5);
+      --bg-active: var(--grey-6);
+    }
+
+    &.outline {
+      --color: var(--grey-4);
+      --color-hover: var(--grey-5);
+      --color-active: var(--grey-6);
+    }
+
+    &.borderless {
+      --fg: var(--grey-4);
+      --fg-hover: var(--grey-5);
+      --bg-hover: var(--grey-1);
+      --fg-active: var(--grey-6);
+      --bg-active: var(--grey-2);
+    }
+  }
+}
+
+:--theme-dark {
+  .red {
+    &.solid {
+      --bg: var(--red-4);
+      --bg-hover: var(--red-5);
+      --bg-active: var(--red-6);
+    }
+
+    &.outline {
+      --color: var(--red-3);
+      --color-hover: var(--red-4);
+      --color-active: var(--red-5);
+    }
+
+    &.borderless {
+      --fg: var(--red-4);
+      --fg-hover: var(--red-5);
+      --bg-hover: var(--red-1);
+      --fg-active: var(--red-6);
+      --bg-active: var(--red-2);
+    }
+  }
+
+  .pink {
+    &.solid {
+      --bg: var(--pink-4);
+      --bg-hover: var(--pink-5);
+      --bg-active: var(--pink-6);
+    }
+
+    &.outline {
+      --color: var(--pink-3);
+      --color-hover: var(--pink-4);
+      --color-active: var(--pink-5);
+    }
+
+    &.borderless {
+      --fg: var(--pink-4);
+      --fg-hover: var(--pink-5);
+      --bg-hover: var(--pink-1);
+      --fg-active: var(--pink-6);
+      --bg-active: var(--pink-2);
+    }
+  }
+
+  .yellow {
+    &.solid {
+      --bg: var(--yellow-4);
+      --bg-hover: var(--yellow-5);
+      --bg-active: var(--yellow-6);
+    }
+
+    &.outline {
+      --color: var(--yellow-3);
+      --color-hover: var(--yellow-4);
+      --color-active: var(--yellow-5);
+    }
+
+    &.borderless {
+      --fg: var(--yellow-4);
+      --fg-hover: var(--yellow-5);
+      --bg-hover: var(--yellow-1);
+      --fg-active: var(--yellow-6);
+      --bg-active: var(--yellow-2);
+    }
+  }
+
+  .green {
+    &.solid {
+      --bg: var(--green-4);
+      --bg-hover: var(--green-5);
+      --bg-active: var(--green-6);
+    }
+
+    &.outline {
+      --color: var(--green-3);
+      --color-hover: var(--green-4);
+      --color-active: var(--green-5);
+    }
+
+    &.borderless {
+      --fg: var(--green-4);
+      --fg-hover: var(--green-5);
+      --bg-hover: var(--green-1);
+      --fg-active: var(--green-6);
+      --bg-active: var(--green-2);
+    }
+  }
+
+  .blue {
+    &.solid {
+      --bg: var(--blue-4);
+      --bg-hover: var(--blue-5);
+      --bg-active: var(--blue-6);
+    }
+
+    &.outline {
+      --color: var(--blue-3);
+      --color-hover: var(--blue-4);
+      --color-active: var(--blue-5);
+    }
+
+    &.borderless {
+      --fg: var(--blue-4);
+      --fg-hover: var(--blue-5);
+      --bg-hover: var(--blue-1);
+      --fg-active: var(--blue-6);
+      --bg-active: var(--blue-2);
+    }
+  }
+
+  .purple {
+    &.solid {
+      --bg: var(--purple-4);
+      --bg-hover: var(--purple-5);
+      --bg-active: var(--purple-6);
+    }
+
+    &.outline {
+      --color: var(--purple-3);
+      --color-hover: var(--purple-4);
+      --color-active: var(--purple-5);
+    }
+
+    &.borderless {
+      --fg: var(--purple-4);
+      --fg-hover: var(--purple-5);
+      --bg-hover: var(--purple-1);
+      --fg-active: var(--purple-6);
+      --bg-active: var(--purple-2);
+    }
+  }
+
+  .kitsu-purple {
+    &.solid {
+      --bg: var(--kitsu-purple-3);
+      --bg-hover: var(--kitsu-purple-4);
+      --bg-active: var(--kitsu-purple-6);
+    }
+
+    &.outline {
+      --color: var(--kitsu-purple-2);
+      --color-hover: var(--kitsu-purple-3);
+      --color-active: var(--kitsu-purple-5);
+    }
+
+    &.borderless {
+      --fg: var(--kitsu-purple-2);
+      --fg-hover: var(--kitsu-purple-3);
+      --bg-hover: var(--kitsu-purple-1);
+      --fg-active: var(--kitsu-purple-4);
+      --bg-active: var(--kitsu-purple-2);
+    }
+  }
+
+  .grey {
+    &.solid {
+      --bg: var(--grey-4);
+      --bg-hover: var(--grey-5);
+      --bg-active: var(--grey-6);
+    }
+
+    &.outline {
+      --color: var(--grey-4);
+      --color-hover: var(--grey-5);
+      --color-active: var(--grey-6);
+    }
+
+    &.borderless {
+      --fg: var(--grey-4);
+      --fg-hover: var(--grey-5);
+      --bg-hover: var(--grey-1);
+      --fg-active: var(--grey-6);
+      --bg-active: var(--grey-2);
+    }
+  }
+}
+
+/*** Button Sizes ***/
+.small {
+  padding-block: 0.25rem;
+  padding-inline: 1rem;
+  font-size: var(--font-sm);
+  border-radius: 3px;
+}
+
+.medium {
+  padding-block: 0.55rem;
+  padding-inline: 3rem;
+  font-size: var(--font-sm);
+  border-radius: 5px;
+}
+
+.large {
+  padding-block: 1rem;
+  padding-inline: 4rem;
+  font-size: var(--font-la);
+  border-radius: 8px;
+}
+
+/*** Button States ***/
+.loading,
+.disabled {
+  pointer-events: none;
+}
+
+.button.disabled,
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+  filter: saturate(50%);
+}

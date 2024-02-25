@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../"
+
+docker compose up -d $@
+
+bash ./bin/seed
+
+echo "Listening at http://localhost:$(./bin/port)/"
+echo "Logs are available via \`bin/logs\`"

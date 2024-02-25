@@ -1,0 +1,31 @@
+development:
+  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  prefix: 'development'
+  request_timeout: 7
+  adapter: :net_http
+  sidekiq:
+    queue: 'later'
+
+test:
+  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  prefix: 'test'
+  request_timeout: 7
+  adapter: :net_http
+  sidekiq:
+    queue: 'later'
+
+staging:
+  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  prefix: 'production'
+  request_timeout: 7
+  adapter: :net_http
+  sidekiq:
+    queue: 'later'
+
+production:
+  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  prefix: 'production'
+  request_timeout: 7
+  adapter: :net_http
+  sidekiq:
+    queue: 'later'

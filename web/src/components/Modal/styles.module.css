@@ -1,0 +1,61 @@
+.modalContainer,
+.pageContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  pointer-events: auto;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--modal-scrim-background);
+  z-index: var(--layer-modal);
+}
+
+.pageContainer {
+  background-color: var(--modal-page-background);
+}
+
+.modal {
+  all: unset;
+  contain: content;
+  background: var(--modal-background);
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--modal-shadow);
+
+  @media (--medium) {
+    & {
+      min-width: 530px;
+    }
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: var(--modal-close-button-color);
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}

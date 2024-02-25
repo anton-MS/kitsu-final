@@ -1,0 +1,127 @@
+.container {
+  font-size: var(--font-me);
+  display: grid;
+  grid-template-columns: 2em auto;
+  grid-template-rows: 2em;
+  align-items: center;
+}
+
+.checkbox {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--checkbox-bg);
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color, box-shadow;
+  /* This makes animating smoother than a border */
+  box-shadow: var(--checkbox-border) 0 0 0 1px inset;
+  border-radius: 3px;
+  block-size: 1.2em;
+  inline-size: 1.2em;
+  font-size: 100%;
+  justify-self: center;
+  outline: var(--focus-outline);
+  outline-width: 0;
+
+  /* tick mark */
+  &::after {
+    content: '';
+    display: block;
+    block-size: 100%;
+    inline-size: 100%;
+    margin: 2px;
+    transform: scale(0);
+    transition: 100ms transform ease-in-out;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background-color: var(--checkbox-fg);
+  }
+}
+
+.checkbox:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.checkbox:checked,
+.checkbox:indeterminate,
+.checkbox:disabled {
+  box-shadow: none;
+
+  &::after {
+    transform: scale(1);
+  }
+}
+
+/* We use a mask to allow the icon to be recolored by CSS */
+.checkbox:checked::after {
+  mask-image: url('app/assets/icons/check.svg');
+}
+
+.checkbox:indeterminate::after {
+  mask-image: url('app/assets/icons/check-indeterminate.svg');
+}
+
+.checkbox:disabled {
+  opacity: 0.75;
+}
+
+:--theme-light {
+  .checkbox {
+    --checkbox-bg: var(--white);
+    --checkbox-fg: var(--white);
+    --checkbox-border: var(--grey-3);
+  }
+
+  .checkbox:checked,
+  .checkbox:indeterminate {
+    --checkbox-bg: var(--green-4);
+    --checkbox-fg: var(--white);
+  }
+
+  .checkbox:disabled {
+    --checkbox-bg: var(--grey-3);
+    --checkbox-fg: var(--white);
+  }
+}
+
+:--theme-dark {
+  .checkbox {
+    --checkbox-bg: var(--kitsu-purple-4);
+    --checkbox-fg: var(--kitsu-purple-4);
+    --checkbox-border: var(--kitsu-purple-3);
+  }
+
+  .checkbox:checked,
+  .checkbox:indeterminate {
+    --checkbox-bg: var(--green-5);
+    --checkbox-fg: var(--white);
+  }
+
+  .checkbox:disabled {
+    --checkbox-bg: var(--grey-5);
+    --checkbox-fg: var(--white);
+  }
+}
+
+:--theme-oled {
+  .checkbox {
+    --checkbox-bg: var(--kitsu-purple-6);
+    --checkbox-fg: var(--kitsu-purple-6);
+    --checkbox-border: var(--kitsu-purple-2);
+  }
+
+  .checkbox:checked,
+  .checkbox:indeterminate {
+    --checkbox-bg: var(--green-5);
+    --checkbox-fg: var(--white);
+  }
+
+  .checkbox:disabled {
+    --checkbox-bg: var(--grey-5);
+    --checkbox-fg: var(--white);
+  }
+}

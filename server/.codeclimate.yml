@@ -1,0 +1,21 @@
+# Using CodeClimate Platform
+# http://docs.codeclimate.com/article/300-the-codeclimate-platform
+
+engines:
+  scsslint:
+    enabled: true
+  bundler_audit:
+    enabled: true
+
+ratings:
+  paths:
+  - app/**/*
+  - lib/**/*
+  - "**/*.rb"
+
+exclude_paths:
+- db/migrate/*
+- db/schema.rb
+- spec/**/*
+- vendor/**/*
+- lib/generators/**/*

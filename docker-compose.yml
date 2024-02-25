@@ -1,0 +1,64 @@
+version: "3.8"
+
+volumes:
+  postgres:
+    driver: local
+  uploads:
+    driver: local
+
+services:
+  # Databases
+  postgres:
+    image: postgres:11
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: kitsu_development
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+  # Application
+  api: &rails
+    depends_on: [postgres, redis]
+    build:
+      context: ./server
+      dockerfile: Dockerfile.local
+    develop:
+      watch:
+        - action: sync
+          path: ./server
+          target: /opt/kitsu/server
+        - action: sync+restart
+          path: ./server/config
+          target: /opt/kitsu/server/config
+        - action: rebuild
+          path: ./server/Gemfile.lock
+        - action: rebuild
+          path: ./server/Dockerfile.local
+    environment:
+      DATABASE_URL: "postgresql://kitsu_development@postgres/"
+      REDIS_URL: "redis://redis/1"
+      RAILS_ENV: development
+    ports:
+      - "80:80"
+
+  web:
+    build: ./web
+    tmpfs:
+      - /opt/kitsu/client/node_modules/.vite/cache
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /opt/kitsu/web
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package-lock.json
+        - action: rebuild
+          path: Dockerfile
+    ports:
+      - "5173:5173"

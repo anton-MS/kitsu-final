@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "vite.config.ts",
+    "rollup/imageMetadataPlugin.ts",
+    "postcss/resolveLocalCustomProperties.js",
+    "postcss/validateThemeVariables.js"
+  ]
+}

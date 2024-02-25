@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "ESNext"
+    ],
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "skipLibCheck": false,
+    "strict": true,
+    "baseUrl": ".",
+    "types": [
+      "node"
+    ],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": false
+  },
+  "extends": "../tsconfig.json",
+  "include": [
+    "."
+  ]
+}
